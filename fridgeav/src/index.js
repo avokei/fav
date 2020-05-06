@@ -4,12 +4,22 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+const siteUrl = "https://https://www.whirlpoolparts.com/PartSearch/ProductBrandAllModels?brandId=200&productId=4";
+const axios = require("axios");
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+const fetchData = async () => {
+  const result = await axios.get(siteUrl);
+  return cheerio.load(result.data);
+};
+
+const $ = await fetchData();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
